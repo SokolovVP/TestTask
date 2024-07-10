@@ -1,10 +1,10 @@
 ﻿namespace CurrencyApplication;
 
-public class CurrencyRepository : ICurrencyRepository
+public class ExchangeRateRepository : IExchangeRateRepository
 {
     private readonly IExchangeRateProvider _exchangeRateProvider;
 
-    public CurrencyRepository(IExchangeRateProvider exchangeRateProvider)
+    public ExchangeRateRepository(IExchangeRateProvider exchangeRateProvider)
     {
         _exchangeRateProvider = exchangeRateProvider;
     }
