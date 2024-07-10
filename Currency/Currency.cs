@@ -11,7 +11,7 @@ public class Currency
 
     public List<ExchangeRate> GetAllExchangeRates()
     {
-        return _exchangeRateProvider.GetExchangeRatesAsync().Result ?? throw new Exception("No exchange rates found");
+        return _exchangeRateProvider.GetExchangeRatesAsync().Result.ToList() ?? throw new Exception("No exchange rates found");
     }
 
     public List<ExchangeRate> GetExchangeRatesForCurrentCurrency(CurrencyList currency)
@@ -25,11 +25,4 @@ public class Currency
 
         return exchangeRates.Where(r => r.CurrentCurrency == currency).ToList();
     }
-
-    public enum CurrencyList
-    {
-        EUR, RUB, USD, RSD, JPY, GBP, CNY, CHF, AED, MXN
-    }
-
-    public record ExchangeRate(CurrencyList CurrentCurrency, CurrencyList TargetCurrency, decimal ExchangeRateValue);
 }

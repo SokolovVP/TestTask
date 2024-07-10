@@ -11,30 +11,30 @@ var cur = new Currency(_rateProvider);
 MoneyConverter moneyConverter = new MoneyConverter(cur);
 MoneyOperations moneyOperations = new MoneyOperations(moneyConverter);
 
-Money GBPSum = new Money(Currency.CurrencyList.GBP, 4);
-Money RubSum = moneyConverter.ConvertToNewCurrency(GBPSum, Currency.CurrencyList.RUB);
-Console.WriteLine($"SUM IN GBP: {GBPSum.Amount} = {RubSum.Amount} {(Currency.CurrencyList)RubSum.CurrentCurrency}");
+Money GBPSum = new Money(CurrencyList.GBP, 4);
+Money RubSum = moneyConverter.ConvertToNewCurrency(GBPSum, CurrencyList.RUB);
+Console.WriteLine($"SUM IN GBP: {GBPSum.Amount} = {RubSum.Amount} {(CurrencyList)RubSum.CurrentCurrency}");
 
 
-Money CNYSum = new Money(Currency.CurrencyList.CNY, 5);
-RubSum = moneyConverter.ConvertToNewCurrency(CNYSum, Currency.CurrencyList.RUB);
-Console.WriteLine($"SUM IN CNY: {CNYSum.Amount} = {RubSum.Amount} {(Currency.CurrencyList)RubSum.CurrentCurrency}");
+Money CNYSum = new Money(CurrencyList.CNY, 5);
+RubSum = moneyConverter.ConvertToNewCurrency(CNYSum, CurrencyList.RUB);
+Console.WriteLine($"SUM IN CNY: {CNYSum.Amount} = {RubSum.Amount} {(CurrencyList)RubSum.CurrentCurrency}");
 
 
-Money CHFSum = new Money(Currency.CurrencyList.CHF, 6);
-RubSum = moneyConverter.ConvertToNewCurrency(CHFSum, Currency.CurrencyList.RUB);
-Console.WriteLine($"SUM IN CHF: {CHFSum.Amount} = {RubSum.Amount} {(Currency.CurrencyList)RubSum.CurrentCurrency}");
+Money CHFSum = new Money(CurrencyList.CHF, 6);
+RubSum = moneyConverter.ConvertToNewCurrency(CHFSum, CurrencyList.RUB);
+Console.WriteLine($"SUM IN CHF: {CHFSum.Amount} = {RubSum.Amount} {(CurrencyList)RubSum.CurrentCurrency}");
 
 
-Money AEDSum = new Money(Currency.CurrencyList.AED, 8);
-RubSum = moneyConverter.ConvertToNewCurrency(AEDSum, Currency.CurrencyList.RUB);
-Console.WriteLine($"SUM IN AED: {AEDSum.Amount} = {RubSum.Amount} {(Currency.CurrencyList)RubSum.CurrentCurrency}");
+Money AEDSum = new Money(CurrencyList.AED, 8);
+RubSum = moneyConverter.ConvertToNewCurrency(AEDSum, CurrencyList.RUB);
+Console.WriteLine($"SUM IN AED: {AEDSum.Amount} = {RubSum.Amount} {(CurrencyList)RubSum.CurrentCurrency}");
 
 
-Console.WriteLine($"{CNYSum.Amount} {(Currency.CurrencyList)CNYSum.CurrentCurrency} + " +
-    $"{CHFSum.Amount} {(Currency.CurrencyList)CHFSum.CurrentCurrency} = " +
-    $"{moneyOperations.Add(CNYSum, CHFSum, Currency.CurrencyList.RUB).Amount} ");
+Console.WriteLine($"{CNYSum.Amount} {(CurrencyList)CNYSum.CurrentCurrency} + " +
+    $"{CHFSum.Amount} {(CurrencyList)CHFSum.CurrentCurrency} = " +
+    $"{moneyOperations.Add(CNYSum, CHFSum, CurrencyList.RUB).Amount} ");
 
-Console.WriteLine($"{GBPSum.Amount} {(Currency.CurrencyList)GBPSum.CurrentCurrency} - " +
-    $"{AEDSum.Amount} {(Currency.CurrencyList)AEDSum.CurrentCurrency} = " +
-    $"{moneyOperations.Sub(GBPSum, AEDSum, Currency.CurrencyList.RUB).Amount} ");
+Console.WriteLine($"{GBPSum.Amount} {(CurrencyList)GBPSum.CurrentCurrency} - " +
+    $"{AEDSum.Amount} {(CurrencyList)AEDSum.CurrentCurrency} = " +
+    $"{moneyOperations.Sub(GBPSum, AEDSum, CurrencyList.RUB).Amount} ");

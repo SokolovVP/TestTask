@@ -9,7 +9,7 @@ public class MoneyConverter
         this.currency = currency;
     }
 
-    public Money ConvertToNewCurrency(Money SourceMoney, Currency.CurrencyList TargetCurrency)
+    public Money ConvertToNewCurrency(Money SourceMoney, CurrencyList TargetCurrency)
     {
         if (SourceMoney.CurrentCurrency == TargetCurrency)
         {
@@ -42,11 +42,11 @@ public class MoneyConverter
             else
             {
                 var AllExchangeSourceRates = currency.GetExchangeRatesForCurrentCurrency(SourceMoney.CurrentCurrency);
-                List<Currency.CurrencyList> availableCurrenciesForSource =
+                List<CurrencyList> availableCurrenciesForSource =
                     AllExchangeSourceRates.Select(x => x.TargetCurrency).ToList();
 
                 var AllExchangeTargetRates = currency.GetExchangeRatesForCurrentCurrency(TargetCurrency);
-                List<Currency.CurrencyList> availableCurrenciesForTarget =
+                List<CurrencyList> availableCurrenciesForTarget =
                     AllExchangeTargetRates.Select(x => x.TargetCurrency).ToList();
 
                 var TransitCurrency = ExchangeRates
@@ -100,7 +100,7 @@ public class MoneyConverter
                     && AllAvailableCurrenciesToConvertToTarget.Contains(x.CurrentCurrency)
                     && x.TargetCurrency == SourceMoney.CurrentCurrency);
 
-                //X can be converted both to source and to target
+                //X can be converted to both source and target
 
                 if (TransitCurrency is not null)
                 {

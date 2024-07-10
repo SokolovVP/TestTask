@@ -2,5 +2,5 @@
 
 public interface IExchangeRateProvider
 {
-    public Task<List<Currency.ExchangeRate>> GetExchangeRatesAsync();
+    public Task<IEnumerable<ExchangeRate>> GetExchangeRatesAsync();
 }
