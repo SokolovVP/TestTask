@@ -13,14 +13,14 @@ public class ExchangeRateJsonProvider : IExchangeRateProvider
             throw new Exception($"Exchange rates file ({ExchangeRatesFilePath}) doesn't exist");
         }
 
-        List<ExchangeRate>? DeserializedList;
+        IEnumerable<ExchangeRate>? DeserializedRates;
 
         using (FileStream ExchangeRateFileStream  = new FileStream(ExchangeRatesFilePath, FileMode.Open))
         {
-            DeserializedList = await JsonSerializer.DeserializeAsync<List<ExchangeRate>>(ExchangeRateFileStream);
+            DeserializedRates = await JsonSerializer.DeserializeAsync<IEnumerable<ExchangeRate>>(ExchangeRateFileStream);
         }
 
-        return DeserializedList ?? throw new Exception($"Can't deserialize to {typeof(List<ExchangeRate>)}");
+        return DeserializedRates ?? throw new Exception($"Can't deserialize to {typeof(List<ExchangeRate>)}");
     }
 
     
