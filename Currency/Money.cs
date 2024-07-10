@@ -4,7 +4,7 @@ public class Money
 {
     public CurrencyList CurrentCurrency { get; set; }
 
-    public decimal Amount;
+    public decimal Amount { get; set; }
 
     public Money(CurrencyList CurrentCurrency, decimal Amount)
     {
