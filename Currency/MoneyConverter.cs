@@ -1,10 +1,10 @@
 ﻿namespace CurrencyApplication;
 
-public class MoneyConverter
+public class MoneyConverter : IMoneyConverter
 {
-    private readonly ICurrencyRepository _currencyRepository;
+    private readonly IExchangeRateRepository _currencyRepository;
 
-    public MoneyConverter(ICurrencyRepository currencyRepository)
+    public MoneyConverter(IExchangeRateRepository currencyRepository)
     {
         _currencyRepository = currencyRepository;
     }
@@ -28,16 +28,6 @@ public class MoneyConverter
             {
                 decimal NewValueInTargetCurrency = SourceMoney.Amount * ExchangeRatePair.ExchangeRateValue;
                 return new Money(TargetCurrency, NewValueInTargetCurrency);
-            }
-            
-            var ReverseExchangeRatePair = ExchangeRates
-                .Where(x => x.CurrentCurrency == TargetCurrency && x.TargetCurrency == SourceMoney.CurrentCurrency)
-                .FirstOrDefault();
-
-            if (ReverseExchangeRatePair is not null)
-            {
-                decimal NewValueInTargetCurrency = SourceMoney.Amount / ReverseExchangeRatePair.ExchangeRateValue;
-                return new Money (TargetCurrency, NewValueInTargetCurrency);
             }
             else
             {
@@ -135,6 +125,7 @@ public class MoneyConverter
                 }
             }
         }
-        throw new Exception();
+        throw new Exception($"No available exchange rates for this operation (source = {SourceMoney.CurrentCurrency}), " +
+            $"(target = {TargetCurrency})");
     }
 }
