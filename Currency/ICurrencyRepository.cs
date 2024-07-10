@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace CurrencyApplication;
 
-namespace Currency
+public interface ICurrencyRepository
 {
-    internal class ICurrencyRepository
-    {
-    }
+    public List<ExchangeRate> GetAllExchangeRates();
+    public List<ExchangeRate> GetExchangeRatesForCurrentCurrency(CurrencyList currency);
 }

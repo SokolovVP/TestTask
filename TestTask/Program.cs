@@ -5,7 +5,7 @@ var ServiceCollection = new ServiceCollection().AddScoped<IExchangeRateProvider,
 var ServiceProvider = ServiceCollection.BuildServiceProvider();
 IExchangeRateProvider? _rateProvider = ServiceProvider.GetService<IExchangeRateProvider>();
 
-var cur = new Currency(_rateProvider);
+var cur = new CurrencyRepository(_rateProvider);
 
 
 MoneyConverter moneyConverter = new MoneyConverter(cur);
