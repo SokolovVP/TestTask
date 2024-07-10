@@ -1,10 +1,10 @@
 ﻿namespace CurrencyApplication;
 
-public class MoneyOperations
+public class MoneyOperations : IMoneyOperations
 {
-    private readonly MoneyConverter _moneyConverter;
+    private readonly IMoneyConverter _moneyConverter;
 
-    public MoneyOperations(MoneyConverter moneyConverter)
+    public MoneyOperations(IMoneyConverter moneyConverter)
     {
         _moneyConverter = moneyConverter;
     }

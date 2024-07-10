@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTask", "TestTask\TestTask.csproj", "{C374DFF4-416C-4147-B9DA-24FFB0F080FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTask", "TestTask\TestTask.csproj", "{C374DFF4-416C-4147-B9DA-24FFB0F080FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Currency", "Currency\Currency.csproj", "{77211802-64D0-4DE4-B947-02B969663F59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Currency", "Currency\Currency.csproj", "{77211802-64D0-4DE4-B947-02B969663F59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Currency.Tests", "Currency.Tests\Currency.Tests.csproj", "{D128A870-9F49-46D8-B225-ED03495F56A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{77211802-64D0-4DE4-B947-02B969663F59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77211802-64D0-4DE4-B947-02B969663F59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77211802-64D0-4DE4-B947-02B969663F59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D128A870-9F49-46D8-B225-ED03495F56A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D128A870-9F49-46D8-B225-ED03495F56A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D128A870-9F49-46D8-B225-ED03495F56A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D128A870-9F49-46D8-B225-ED03495F56A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

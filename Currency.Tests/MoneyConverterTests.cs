@@ -21,6 +21,7 @@ public class MoneyConverterTests
         Assert.Equal(_moneyObject.Amount * GetAllRates()[2].ExchangeRateValue, result.Amount);
     }
 
+    [Fact]
     public void ConvertsThroughTransitCurrencyRate()
     {
         var IExchangeRateProviderMock = new Mock<IExchangeRateProvider>();
