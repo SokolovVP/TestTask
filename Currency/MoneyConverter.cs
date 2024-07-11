@@ -2,21 +2,21 @@
 
 public class MoneyConverter : IMoneyConverter
 {
-    private readonly IExchangeRateRepository _currencyRepository;
+    private readonly IExchangeRateRepository _exchangeRateRepository;
 
-    public MoneyConverter(IExchangeRateRepository currencyRepository)
+    public MoneyConverter(IExchangeRateRepository exchangeRateRepository)
     {
-        _currencyRepository = currencyRepository;
+        _exchangeRateRepository = exchangeRateRepository;
     }
 
     public Money ConvertToNewCurrency(Money SourceMoney, CurrencyList TargetCurrency)
     {
         if (SourceMoney.CurrentCurrency == TargetCurrency)
         {
-            return SourceMoney;
+            return new Money(TargetCurrency, SourceMoney.Amount);
         }
 
-        var ExchangeRates = _currencyRepository.GetAllExchangeRates();
+        var ExchangeRates = _exchangeRateRepository.GetAllExchangeRates();
 
         if (ExchangeRates is not null)
         {
@@ -31,11 +31,11 @@ public class MoneyConverter : IMoneyConverter
             }
             else
             {
-                var AllExchangeSourceRates = _currencyRepository.GetExchangeRatesForCurrentCurrency(SourceMoney.CurrentCurrency);
+                var AllExchangeSourceRates = _exchangeRateRepository.GetExchangeRatesForCurrentCurrency(SourceMoney.CurrentCurrency);
                 List<CurrencyList> availableCurrenciesForSource =
                     AllExchangeSourceRates.Select(x => x.TargetCurrency).ToList();
 
-                var AllExchangeTargetRates = _currencyRepository.GetExchangeRatesForCurrentCurrency(TargetCurrency);
+                var AllExchangeTargetRates = _exchangeRateRepository.GetExchangeRatesForCurrentCurrency(TargetCurrency);
                 List<CurrencyList> availableCurrenciesForTarget =
                     AllExchangeTargetRates.Select(x => x.TargetCurrency).ToList();
 
