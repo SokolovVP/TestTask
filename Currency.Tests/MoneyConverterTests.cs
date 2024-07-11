@@ -40,6 +40,27 @@ public class MoneyConverterTests
         Assert.Equal(_moneyObject.Amount * GetAllRates()[5].ExchangeRateValue / GetAllRates()[6].ExchangeRateValue, result.Amount);
     }
 
+    [Fact]
+    public void ConvertsToCurrentRate()
+    {
+        var IExchangeRateProviderMock = new Mock<IExchangeRateProvider>();
+        IExchangeRateProviderMock
+            .Setup(_exchangeRateProvider => _exchangeRateProvider.GetExchangeRatesAsync().Result)
+            .Returns(GetAllRates());
+
+        var _exchangeRateRepository = new ExchangeRateRepository(IExchangeRateProviderMock.Object);
+
+        var _moneyConverter = new MoneyConverter(_exchangeRateRepository);
+
+        Money _moneyObject = new Money(CurrencyList.RUB, 9);
+
+        var result = _moneyConverter.ConvertToNewCurrency(_moneyObject, CurrencyList.RUB);
+
+        Assert.NotNull(result);
+        Assert.IsType<Money>(result);
+        Assert.Equal(_moneyObject.Amount, result.Amount);
+    }
+
     private List<ExchangeRate> GetAllRates()
     {
         return new List<ExchangeRate>
